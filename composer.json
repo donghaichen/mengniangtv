@@ -1,0 +1,29 @@
+{
+    "name": "donghai/blog",
+    "keywords": ["blog", "php"],
+    "descripthon": "A simple blog",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Donghaichen",
+            "email": "chendonghai888@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "clovers/route": "dev-master",
+        "clovers/session": "dev-master",
+        "illuminate/database": "^5.2",
+        "clovers/framework": "dev-master"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+
+}
