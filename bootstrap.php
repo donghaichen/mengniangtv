@@ -153,7 +153,7 @@ DB::schema()->create('posts', function(Blueprint $table)
     $table->timestamps();
 });
 //<d p="85.449,1,25,16777215,1465810497,0,0d6a600c,1955497795">陈东海888</d>
-//出现时间,模式,字号,猜测为用户ID经过变态的计算,发送时间,0=弹幕池,颜色,ID
+//<d p="时间,模式,字体大小,颜色,时间戳,弹幕池,用户ID的CRC32b加密,弹幕ID">内容</d>
 DB::schema()->create('danmas', function(Blueprint $table)
 {
     $table->bigIncrements('id');
@@ -161,9 +161,9 @@ DB::schema()->create('danmas', function(Blueprint $table)
     $table->integer('time');
     $table->smallInteger('type');
     $table->smallInteger('size');
+    $table->string('color', 8);
     $table->integer('add_time');
     $table->smallInteger('pool');
-    $table->string('color', 8);
     $table->bigInteger('uid')->index();
     $table->text('content', 100);
     $table->timestamps();
