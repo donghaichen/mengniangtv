@@ -988,4 +988,4 @@
                        $table->timestamps();
                    });
                 
-##### Thanks !
+##### Thanks
