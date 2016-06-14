@@ -26,3 +26,6 @@ $db = new DB;
 $db->addConnection($database);
 $db->setAsGlobal();
 $db->bootEloquent();
+
+// 启动APP
+$router->run();

@@ -12,4 +12,3 @@ Route::get('curl', 'HomeController@testCurlPage');
 Route::post('curl', 'HomeController@testCurlPage');
 Route::any('test/code/{id?}', 'CodeController@send');
 Route::get('create_table', 'DatabaseController@createTable');
-$router->run();
