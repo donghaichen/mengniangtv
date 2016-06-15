@@ -2,13 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: donghai
- * Date: 16/6/12
- * Time: 09:27
+ * Date: 16/6/15
+ * Time: 21:08
  */
 
 namespace App;
+use Illuminate\Database\Eloquent\Model AS Eloquent;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
 class Video extends Eloquent
 {
     protected $table = 'videos';

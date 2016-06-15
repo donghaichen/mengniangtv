@@ -7,14 +7,23 @@
  */
 
 namespace App\Controllers;
+use App\User;
 
 
 class UserController extends BaseController
 {
     public function show($request)
     {
+        $user = new User;
+
+        $user->mobile = 'John' . rand(0 ,10000);
+        $user->username = 'donghaichen' . rand(0, 1000);
+        $user->reg_ip = $this->getIp();
+
+        $user->save();
         var_dump($request);
     }
+
     public function avatar($uid, $size = 'middle', $returnsrc = FALSE, $real = FALSE, $static = FALSE, $ucenterurl = '')
     {
         global $_G;

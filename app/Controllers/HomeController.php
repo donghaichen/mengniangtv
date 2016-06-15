@@ -20,14 +20,15 @@ class HomeController extends BaseController
 //        $session->set("age",json_encode($this->test()));
 //        $name = $session->get('age');
 //        var_dump($_SESSION);
-        // ²éÑ¯idÎª2µÄ
-        $video = Video::all();
-        var_dump($video);
+        // æŸ¥è¯¢idä¸º2çš„
+//        $video = Video::all();
+//        var_dump($video);
+        var_dump(Video::all());
 //
-//// ²éÑ¯È«²¿
+//// æŸ¥è¯¢å…¨éƒ¨
 //        $users = User::all();
 //
-//// ´´½¨Êý¾Ý
+//// åˆ›å»ºæ•°æ®
 //        $user = new User;
 //        $user->username = 'someone';
 //        $user->email = 'some@overtrue.me';
@@ -39,9 +40,9 @@ class HomeController extends BaseController
         return [
             'app_key'   =>"test2222key",
             'app_secret'=>"testsercret",
-                'images'    =>[
-                    'file'  =>'@/Users/donghai/Desktop/clover500.png'
-                ]
+            'images'    =>[
+                'file'  =>'@/Users/donghai/Desktop/clover500.png'
+            ]
         ];
     }
 
