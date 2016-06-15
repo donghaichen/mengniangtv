@@ -1,11 +1,11 @@
 <?php
 
-namespace Douyasi\Http\Controllers\Admin;
+namespace App\Controllers\Admin;
 
-use Douyasi\Http\Requests\CategoryRequest;
-use Douyasi\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Douyasi\Repositories\MetaRepository;
+use App\Repositories\MetaRepository;
 
 /**
  * 分类资源控制器
@@ -18,7 +18,7 @@ class AdminCategoryController extends BackController
     /**
      * The MetaRepository instance.
      *
-     * @var Douyasi\Repositories\MetaRepository
+     * @var App\Repositories\MetaRepository
      */
     protected $meta;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Douyasi\Http\Controllers\Admin;
+namespace App\Controllers\Admin;
 
-use Douyasi\Http\Requests\TagRequest;
-use Douyasi\Http\Controllers\Controller;
+use App\Http\Requests\TagRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 /**

@@ -1,12 +1,12 @@
 <?php
 
-namespace Douyasi\Http\Controllers\Admin;
+namespace App\Controllers\Admin;
 
-use Douyasi\Http\Requests\UserRequest;
-use Douyasi\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Douyasi\Logger\SystemLogger as SystemLogger;
-use Douyasi\Repositories\UserRepository;
+use App\Logger\SystemLogger as SystemLogger;
+use App\Repositories\UserRepository;
 use Cache;
 
 /**
@@ -21,7 +21,7 @@ class AdminUserController extends BackController
     /**
      * The UserRepository instance.
      *
-     * @var Douyasi\Repositories\UserRepository
+     * @var App\Repositories\UserRepository
      */
     protected $user;
 

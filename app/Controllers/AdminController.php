@@ -1,14 +1,14 @@
 <?php
 
-namespace Douyasi\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Douyasi\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Douyasi\Events\UserUpload as UserUpload;
+use App\Events\UserUpload as UserUpload;
 use Validator;
-use Douyasi\Cache\SystemOptionCache as SystemOptionCache;
-use Douyasi\Cache\DataCache as DataCache;
-use Douyasi\Cache\SettingCache as SettingCache;
+use App\Cache\SystemOptionCache as SystemOptionCache;
+use App\Cache\DataCache as DataCache;
+use App\Cache\SettingCache as SettingCache;
 use Cache;
 
 /**

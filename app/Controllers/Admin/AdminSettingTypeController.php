@@ -1,11 +1,11 @@
 <?php
 
-namespace Douyasi\Http\Controllers\Admin;
+namespace App\Controllers\Admin;
 
-use Douyasi\Http\Requests\SettingTypeRequest;
-use Douyasi\Http\Controllers\Controller;
+use App\Http\Requests\SettingTypeRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Douyasi\Repositories\SettingRepository;
+use App\Repositories\SettingRepository;
 use Cache;
 
 /**
@@ -19,7 +19,7 @@ class AdminSettingTypeController extends BackController
 /**
      * The SettingRepository instance.
      *
-     * @var Douyasi\Repositories\SettingRepository
+     * @var App\Repositories\SettingRepository
      */
     protected $setting;
 

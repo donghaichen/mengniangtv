@@ -1,12 +1,12 @@
 <?php
 
-namespace Douyasi\Http\Controllers;
+namespace App\Controllers;
 
-use Douyasi\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
-use Douyasi\Events\UserLogin;
-use Douyasi\Events\UserLogout;
+use App\Events\UserLogin;
+use App\Events\UserLogout;
 
 /**
  * 用户登录统一认证

@@ -1,11 +1,11 @@
 <?php
 
-namespace Douyasi\Http\Controllers\Admin;
+namespace App\Controllers\Admin;
 
-use Douyasi\Http\Requests\MeRequest;
-use Douyasi\Http\Controllers\Controller;
+use App\Http\Requests\MeRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Douyasi\Repositories\MeRepository;
+use App\Repositories\MeRepository;
 
 /**
  * 我的账户控制器
@@ -19,7 +19,7 @@ class AdminMeController extends BackController
     /**
      * The MeRepository instance.
      *
-     * @var Douyasi\Repositories\MeRepository
+     * @var App\Repositories\MeRepository
      */
     protected $me;
 

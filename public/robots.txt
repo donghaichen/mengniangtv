@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /getapi
+Disallow: /account
+Disallow: /m/
+Disallow: /html5/
