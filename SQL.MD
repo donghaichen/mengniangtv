@@ -1,9 +1,9 @@
 ##SQL
-SET FOREIGN_KEY_CHECKS = 0;
-``` SQL
+                SET FOREIGN_KEY_CHECKS = 0;
+
                 DROP TABLE IF EXISTS  `mn_admin`;
-                CREATE TABLE `mn_admin` (
-                  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                CREATE TABLE `mn_admin (
+                  id` int(10) unsigned NOT NULL AUTO_INCREMENT,
                   `mobile` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
                   `nickname` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
                   `password` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -401,7 +401,7 @@ SET FOREIGN_KEY_CHECKS = 0;
                 
                 SET FOREIGN_KEY_CHECKS = 1;
                 
-                ```SQL
+```sql
 
 
                 
