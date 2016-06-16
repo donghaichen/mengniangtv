@@ -11,7 +11,7 @@ class HomeController extends BaseController
 {
     public function index()
     {
-        $this->view = View::make('home.index')->with('video',Video::first())
+        $this->view = View::make('home.index')->with('video',Video::all())
 
             ->withTitle('HI MENGNIANG TV')
 

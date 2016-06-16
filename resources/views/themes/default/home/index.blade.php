@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
 
-    <title><?php echo $title ?></title>
+<?php echo $title?>
 
 </head>
 
@@ -14,17 +14,22 @@
 
 <div class="article">
 
-    <h1><?php echo $video['title'] ?></h1>
 
-    <div class="content">
+<?php foreach ($video as $v) {?>
 
-        <?php echo $video['content'] ?>
 
-    </div>
+    <li class="content">
+
+<?php  echo $v['content']; ?>
+        </li>
+        <?php    }?>
+    <?php echo $status ?>
+
+
 
 </div>
 
-        <?php echo $status ?>
+
 
 
 

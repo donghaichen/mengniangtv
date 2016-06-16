@@ -23,6 +23,41 @@ if(! function_exists('get_ip')){
         return $data===false ? $str['ip'] : $str;
     }
 }
+//if (! function_exists('app')) {
+//    /**
+//     * Get the available container instance.
+//     *
+//     * @param  string  $make
+//     * @param  array   $parameters
+//     * @return mixed|\Illuminate\Foundation\Application
+//     */
+//    function app($make = null, $parameters = [])
+//    {
+//        if (is_null($make)) {
+//            return Container::getInstance();
+//        }
+//
+//        return Container::getInstance()->make($make, $parameters);
+//    }
+//}
+//if (! function_exists('csrf_token')) {
+//    /**
+//     * Get the CSRF token value.
+//     *
+//     * @return string
+//     *
+//     * @throws \RuntimeException
+//     */
+//    function csrf_token()
+//    {
+//        $session = app('session');
+//
+//        if (isset($session)) {
+//            return $session->getToken();
+//        }
+//
+//        throw new RuntimeException('Application session store not set.');
+//    }
 
 if(! function_exists('is_mobile')){
     /**
