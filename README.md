@@ -1,7 +1,7 @@
-# èŒå¨˜TVå¼¹å¹•ç½‘ç¨‹åº
+# ÃÈÄïTVµ¯Ä»Íø³ÌÐò
 
-### è¿è¡Œ
+### ÔËÐÐ
             composer intall
-            php -S localhost:8888 -t public
+            sudo php -S localhost:8888 -t public
             
-ä¸ä¼šç”¨composerçš„è¯·è‡ªè¡Œç™¾åº¦æˆ–åŠ å…¥QQç¾¤(384257496)å¯»æ±‚å¸®åŠ©
+²»»áÓÃcomposerµÄÇë×ÔÐÐ°Ù¶È»ò¼ÓÈëQQÈº(384257496)Ñ°Çó°ïÖú

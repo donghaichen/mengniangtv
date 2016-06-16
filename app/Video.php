@@ -11,6 +11,5 @@ use Illuminate\Database\Eloquent\Model AS Eloquent;
 
 class Video extends Eloquent
 {
-    protected $table = 'videos';
 
 }

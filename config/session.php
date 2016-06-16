@@ -9,7 +9,7 @@ return [
     'connection' => null,
     'table' => 'sessions',
     'lottery' => [2, 100],
-    'cookie' => 'laravel_session',
+    'cookie' => 'clover_session',
     'path' => '/',
     'domain' => null,
     //HTTPS Only Cookies

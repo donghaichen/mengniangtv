@@ -16,7 +16,10 @@
         "clovers/route": "dev-master",
         "clovers/session": "dev-master",
         "illuminate/database": "^5.2",
-        "clovers/framework": "dev-master"
+        "clovers/framework": "dev-master",
+        "monolog/monolog": "^1.19",
+        "filp/whoops": "^2.1",
+        "clovers/view": "dev-master"
     },
     "require-dev": {
     },

@@ -5,11 +5,17 @@ use Clovers\Session\Session;
 use Clovers\Session\Storage\File;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Capsule\Manager as DB;
+use Clovers\View\View;
 
 class HomeController extends BaseController
 {
     public function index()
     {
+        $this->view = View::make('home.index')->with('video',Video::first())
+
+            ->withTitle('HI MENGNIANG TV')
+
+            ->withStatus('OK!');
 //        $users = User::find(2);
 //        $users = User::all();
 //        $user = new User;
@@ -23,7 +29,7 @@ class HomeController extends BaseController
         // 查询id为2的
 //        $video = Video::all();
 //        var_dump($video);
-        var_dump(Video::all());
+//        var_dump(Video::all());
 //
 //// 查询全部
 //        $users = User::all();
@@ -45,6 +51,7 @@ class HomeController extends BaseController
             ]
         ];
     }
+
 
 
 
