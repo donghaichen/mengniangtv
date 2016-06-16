@@ -1,38 +1,41 @@
-<!DOCTYPE html>
+<?php include __DIR__ . '/../layouts/header.blade.php' ?>
 
-<html lang="en">
+<div class="jumbotron masthead">
+    <div class="container">
+        <h1>MENGNIANG.TV</h1>
+        <p class="masthead-button-links">
+            <a class="btn btn-lg btn-primary btn-shadow" >Let's   🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶</a>
+        </p>
 
-<head>
-
-    <meta charset="UTF-8">
-
-<?php echo $title?>
-
-</head>
-
-<body>
-
-<div class="article">
-
-
-<?php foreach ($video as $v) {?>
-
-
-    <li class="content">
-
-<?php  echo $v['content']; ?>
-        </li>
-        <?php    }?>
-    <?php echo $status ?>
-
-
-
+    </div>
 </div>
 
 
 
+<div class="container projects">
 
 
-</body>
+    <div class="row">
+<?php foreach($video as $v) {?>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a><img width="300" height="150" ></a>
+                <div class="caption">
+                    <h3>
+                        <a><?php echo $v['title']?></a>
+                    </h3>
+                    <p>
+                        <?php echo $v['content']?>
+                    </p>
+                </div>
+            </div>
+        </div>
+<?php } ?>
 
-</html>
+
+
+    </div>
+</div><!-- /.container -->
+
+
+<?php include __DIR__ . '/../layouts/footer.blade.php' ?>
