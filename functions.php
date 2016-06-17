@@ -17,9 +17,9 @@ if(! function_exists('get_ip')){
      * @param  string  $data
      * @return string json
      */
-    function getIp($data = false)
+    function get_ip($data = false)
     {
-        $str = json_decode($this->httpRequest('http://test.ip138.com/query/'), true);
+        $str = json_decode(http_request('http://test.ip138.com/query/'), true);
         return $data===false ? $str['ip'] : $str;
     }
 }
@@ -107,7 +107,7 @@ if(! function_exists('hide_str')){
 
 if(! function_exists('http_request')){
     //HTTP请求（支持HTTP/HTTPS，支持GET/POST）
-    function httpRequest($url, $data = null)
+    function http_request($url, $data = null)
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -124,7 +124,7 @@ if(! function_exists('http_request')){
     }
 }
 if(! function_exists('is_idcard')){
-    function isIdCard($idCard)
+    function is_idcard($idCard)
     {
         if (!eregi("^[1-9]([0-9a-zA-Z]{17}|[0-9a-zA-Z]{14})$", $idCard)) {
             $flag = 0;

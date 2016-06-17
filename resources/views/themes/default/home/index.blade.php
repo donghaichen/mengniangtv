@@ -3,6 +3,7 @@
 <div class="jumbotron masthead">
     <div class="container">
         <h1>MENGNIANG.TV</h1>
+        <script type="text/javascript" src="http://ip.chinaz.com/getip.aspx"></script>
         <p class="masthead-button-links">
             <a class="btn btn-lg btn-primary btn-shadow" >Let's   🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶</a>
         </p>

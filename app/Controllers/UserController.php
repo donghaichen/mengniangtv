@@ -18,7 +18,7 @@ class UserController extends BaseController
 
         $user->mobile = 'John' . rand(0 ,10000);
         $user->username = 'donghaichen' . rand(0, 1000);
-//        $user->reg_ip = $this->getIp();
+        $user->reg_ip = get_ip();
 
         $user->save();
         var_dump($request);

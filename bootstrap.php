@@ -10,7 +10,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 //载入自定义函数
-require __DIR__ . '/app/functions.php';
+require __DIR__ . '/functions.php';
 
 //定义目录
 define('APP_PATH', __DIR__);
