@@ -33,10 +33,6 @@ $db->addConnection($database);
 $db->setAsGlobal();
 $db->bootEloquent();
 
-//日志
-$monolog = new \Monolog\Logger('system');
-$monolog->pushHandler(new \Monolog\Handler\StreamHandler(STORAGE_PATH . '/log/app.log', \Monolog\Logger::ERROR));
-
 // whoops 错误提示
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);

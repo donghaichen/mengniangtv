@@ -19,8 +19,14 @@ if(! function_exists('get_ip')){
      */
     function get_ip($data = false)
     {
-        $str = json_decode(http_request('http://test.ip138.com/query/'), true);
-        return $data===false ? $str['ip'] : $str;
+        $ip = explode('\'', http_request('http://ip.chinaz.com/getip.aspx'))[1];
+        $ak = "dpYdgjhWGWjY3NkhO7lmzTpf5Hk9S9sl";
+        $address = json_decode(http_request("http://api.map.baidu.com/location/ip?ak=$ak&ip=$ip"), true );
+        $str = [
+            'ip'        => $ip,
+            'address'   => $address['content']
+        ];
+        return $data===false ? $ip : $str;
     }
 }
 //if (! function_exists('app')) {
@@ -117,6 +123,7 @@ if(! function_exists('http_request')){
             curl_setopt($curl, CURLOPT_POST, TRUE);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         }
+        curl_setopt($curl, CURLOPT_TIMEOUT, 5);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($curl);
         curl_close($curl);

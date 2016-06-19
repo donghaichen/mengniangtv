@@ -10,5 +10,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model as Eqloquent;
 class User extends Eqloquent
 {
+    public function hasOneProfile()
+    {
+        return $this->hasOne('App\Profile', 'uid', 'id');
+    }
 
 }

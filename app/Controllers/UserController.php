@@ -8,20 +8,29 @@
 
 namespace App\Controllers;
 use App\User;
-
+use Illuminate\Database\Capsule\Manager as DB;
+use Monolog\Handler\LogEntriesHandler AS Log;
 
 class UserController extends BaseController
 {
     public function show($request)
+    {
+        $account = User::find(1);
+        $this->log('sms', 'sendsmsHAHHA',  (array)$account );
+
+    }
+
+    public function register()
     {
         $user = new User;
 
         $user->mobile = 'John' . rand(0 ,10000);
         $user->username = 'donghaichen' . rand(0, 1000);
         $user->reg_ip = get_ip();
+        $user->password = password_hash('2', PASSWORD_BCRYPT);
+        var_dump(password_verify(21, '$2y$10$16g7ySMVeLctuhCDejQMR.AFstazczsAVxIhfY7G7Ikk7d2KkTYVS'));
 
         $user->save();
-        var_dump($request);
     }
 
     public function avatar($uid, $size = 'middle', $returnsrc = FALSE, $real = FALSE, $static = FALSE, $ucenterurl = '')
