@@ -9,15 +9,34 @@
 namespace App\Controllers;
 use App\User;
 use Illuminate\Database\Capsule\Manager as DB;
-use Monolog\Handler\LogEntriesHandler AS Log;
 
 class UserController extends BaseController
 {
     public function show($request)
     {
+        $user = new User;
+
+        $user->mobile = 'John' . rand(0 ,10000);
+        $user->username = 'donghaichen' . rand(0, 1000);
+        $user->reg_ip = get_ip();
+        $user->password = password_hash('2', PASSWORD_BCRYPT);
+
+        $user->save();
         $account = User::find(1);
+        print_r($account);
+
+
+        print_r( DB::getQueryLog());
         $this->log('sms', 'sendsmsHAHHA',  (array)$account );
 
+    }
+
+    public function lastSql()
+    {
+
+        $sql = DB::getQueryLog();
+        $query = end($sql);
+        return $query;
     }
 
     public function register()
