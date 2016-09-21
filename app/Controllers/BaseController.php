@@ -23,15 +23,15 @@ class BaseController
             extract($view->data);
             require $view->view;
         }
-        $this->log('sql', '系统sql记录', [3]);
+//        $this->log('sql', '系统sql记录', [3]);
     }
 
-    public function log($type, $info, array $context = array())
-    {
-        $monolog = new \Monolog\Logger(strtoupper($type));
-        $file     =  STORAGE_PATH . '/logs/' . $type . date('/Y/m/') . $type . date('-Y-m-d'). ".log";
-        $monolog -> pushHandler(new \Monolog\Handler\StreamHandler($file, \Monolog\Logger::DEBUG));
-        $monolog->addInfo($info, $context);
-    }
+//    public function log($type, $info, array $context = array())
+//    {
+//        $monolog = new \Monolog\Logger(strtoupper($type));
+//        $file     =  STORAGE_PATH . '/logs/' . $type . date('/Y/m/') . $type . date('-Y-m-d'). ".log";
+//        $monolog -> pushHandler(new \Monolog\Handler\StreamHandler($file, \Monolog\Logger::DEBUG));
+//        $monolog->addInfo($info, $context);
+//    }
 
 }

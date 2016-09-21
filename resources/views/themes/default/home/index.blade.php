@@ -15,7 +15,11 @@
 
 <div class="container projects">
 
-
+    <form method="post">
+        <p>First name: <input type="text" name="fname" /></p>
+        <p>Last name: <input type="text" name="lname" /></p>
+        <input type="submit" value="Submit" />
+    </form>
     <div class="row">
 <?php foreach($video as $v) {?>
         <div class="col-sm-6 col-md-4 col-lg-3 ">

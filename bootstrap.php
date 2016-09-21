@@ -19,7 +19,8 @@ define('RESOURCES_PATH', __DIR__ . '/resources');
 define('STORAGE_PATH', RESOURCES_PATH . '/storage');
 define('THEME_PATH', RESOURCES_PATH . '/views/themes');
 define('THEME', 'default');
-
+define('APP_START_TIME', microtime(true));
+define('APP_START_MEM', memory_get_usage());
 //加载配置
 $database = require CONF_PATH . '/database.php';
 

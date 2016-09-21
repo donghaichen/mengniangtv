@@ -1,7 +1,12 @@
-# ÃÈÄïTVµ¯Ä»Íø³ÌĞò
+# èŒå¨˜TVå¼¹å¹•ç½‘ç¨‹åº
 
-### ÔËĞĞ
-            composer intall
+### Install
+```shell
+            git clone https://github.com/donghaichen/mengniangtv.git
+            cd mengniangtv
+            composer install
             sudo php -S localhost:8888 -t public
             
-²»»áÓÃcomposerµÄÇë×ÔĞĞ°Ù¶È»ò¼ÓÈëQQÈº(384257496)Ñ°Çó°ïÖú
+```
+            
+ä¸ä¼šç”¨composerçš„è¯·è‡ªè¡Œç™¾åº¦æˆ–åŠ å…¥QQç¾¤(384257496)å¯»æ±‚å¸®åŠ©
