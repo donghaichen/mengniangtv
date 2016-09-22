@@ -6,16 +6,18 @@ use Clovers\Session\Storage\File;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Capsule\Manager as DB;
 use Clovers\View\View;
-use Clovers\Log\Log;
+
 class HomeController extends BaseController
 {
     public function index()
     {
-        Log::init([
-        'driver'  =>  'File',
-        'path'  =>  STORAGE_PATH . '/logs/'
-    ]);
-        Log::debug('error','错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息错误信息');
+      self::log([
+            'name' => 'donghai',
+            'age' => '18',
+            'address' => 'Shanghai, China',
+            'mobile' => '+86 13917338888',
+            'mail' => 'chendonghai888@gmail.com'
+        ],'userinfo','error');
 
         $this->view = View::make('home.index')->with('video',Video::all())
 

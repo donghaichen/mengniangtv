@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use Exception;
 use Clovers\View\View;
+use Clovers\Log\Log;
 class BaseController
 {
     protected $view;
@@ -23,15 +24,24 @@ class BaseController
             extract($view->data);
             require $view->view;
         }
-//        $this->log('sql', '系统sql记录', [3]);
+        self::log('系统sql记录', 'sql');
     }
 
-//    public function log($type, $info, array $context = array())
-//    {
-//        $monolog = new \Monolog\Logger(strtoupper($type));
-//        $file     =  STORAGE_PATH . '/logs/' . $type . date('/Y/m/') . $type . date('-Y-m-d'). ".log";
-//        $monolog -> pushHandler(new \Monolog\Handler\StreamHandler($file, \Monolog\Logger::DEBUG));
-//        $monolog->addInfo($info, $context);
-//    }
+    /**
+     * 公用日志方法　第二个参数为日志类型，第三个参数为日志等级　　
+     * @access public
+     * @param string　array
+     * @param string
+     * @param string
+     * @return bool
+     */
+    public static function log($log, $type = '', $level = 'debug' )
+    {
+        Log::init([
+            'driver'  =>  'File',
+            'path'  =>  STORAGE_PATH . '/logs/'
+        ]);
+        Log::$level($type, $log);
+    }
 
 }
