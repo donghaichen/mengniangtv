@@ -6,25 +6,37 @@ use Clovers\Log\Log;
 class BaseController
 {
     protected $view;
+    /*
+     * 构造方法
+     * 多用于初始化任务（比如对变量进行初始化赋值）
+     */
     public function __construct()
     {
+        $this->view = $view;
     }
+    /*
+     * 公用404方法
+     * ＠ access public
+     * @ return string
+     */
     public function httpNotFound()
     {
         header('HTTP/1.0 404 Not Found');
         throw new Exception('Im 404 not found');
     }
-
+    /*
+     * 析构方法用于在销毁控制器类前完成试图加载功能
+     * ＠access public
+     * @return bool
+     */
     public function __destruct()
     {
-
         $view = $this->view;
         if ( $view instanceof View )
         {
             extract($view->data);
             require $view->view;
         }
-        self::log('系统sql记录', 'sql');
     }
 
     /**
