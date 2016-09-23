@@ -3,4 +3,5 @@
 .DS_Store
 Thumbs.db
 sql/
+composer.lock
 vendor
