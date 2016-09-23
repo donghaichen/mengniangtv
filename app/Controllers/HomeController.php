@@ -24,6 +24,7 @@ class HomeController extends BaseController
             ->withTitle('HI MENGNIANG TV')
 
             ->withStatus('OK!');
+
 //        $users = User::find(2);
 //        $users = User::all();
 //        $user = new User;
