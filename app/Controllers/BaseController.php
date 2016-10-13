@@ -12,7 +12,6 @@ class BaseController
      */
     public function __construct()
     {
-        $this->view = $view;
     }
     /*
      * 公用404方法
