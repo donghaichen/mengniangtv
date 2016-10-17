@@ -9,9 +9,6 @@
 //注册自动加载
 require __DIR__ . '/vendor/autoload.php';
 
-//载入自定义函数
-require __DIR__ . '/functions.php';
-
 //定义目录
 define('APP_PATH', __DIR__);
 define('CONF_PATH', __DIR__ . '/config');
@@ -21,10 +18,28 @@ define('THEME_PATH', RESOURCES_PATH . '/views/themes');
 define('THEME', 'default');
 define('APP_START_TIME', microtime(true));
 define('APP_START_MEM', memory_get_usage());
-//加载配置
+
+//载入自定义函数
+require __DIR__ . '/functions.php';
+
+// 加载环境变量配置
+$env = parse_ini_file(APP_PATH . '/.env', true);
+foreach ($env as $key => $val) {
+    $name = strtoupper($key);
+    if (is_array($val)) {
+        foreach ($val as $k => $v) {
+            $item = $name . '_' . strtoupper($k);
+            putenv("$item=$v");
+        }
+    } else {
+        putenv("$name=$val");
+    }
+}
+
+//加载APP配置
 $database = require CONF_PATH . '/database.php';
 
-//其他配置
+//加载其他配置
 date_default_timezone_set("PRC");
 
 //Eloquent ORM

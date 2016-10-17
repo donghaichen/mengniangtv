@@ -14,5 +14,6 @@ Route::get('curl', 'HomeController@testCurlPage');
 Route::post('curl', 'HomeController@testCurlPage');
 Route::any('test/code/{id?}', 'CodeController@send');
 Route::get('view', 'HomeController@view');
+Route::get('api/sms', 'ApiController@sendSms');
 //启动APP
 $router->run();

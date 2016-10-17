@@ -7,11 +7,17 @@
  */
 return [
     'theme'              => 'default',
-    'debug'              =>  false,
-    'url'                => 'http://localhost',
+    'debug'              => env('APP_DEBUG', false),
+    'url'                => env('APP_URL', 'http://localhost'),
     'timezone'           => 'PRC',
     'locale'             => 'en',
-    'key'                => 'EYeybWlXKboqCmu9wH8t7UFaaEhpczA5',
+    'key'                => '',
     'cipher'             => 'AES-256-CBC',
     'log'                => 'sigle',
+    'sms'                => [
+        'url'            => env('SMS_URL'),
+        'name'           => env('SMS_NAME'),
+        'pwd'            => env('SMS_PWD'),
+        'sign'           => env('SMS_SIGN'),    //必填参数。用户签名。
+    ]
 ];

@@ -1,11 +1,11 @@
 <?php
 return [
     //Supported: "file", "database", "memcached", "redis"
-    'driver' => 'file',
+    'driver' => env('DRIVER_SESSION', 'file'),
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => storage_path('/session'),
+    'files' => '',
     'connection' => null,
     'table' => 'sessions',
     'lottery' => [2, 100],

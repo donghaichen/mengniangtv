@@ -1,24 +1,36 @@
 <?php
 namespace App\Controllers;
 use App\Video;
+use App\Category;
 use Clovers\Session\Session;
 use Clovers\Session\Storage\File;
+use Illuminate\Clover\Config;
+use Illuminate\Clover\Env;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Capsule\Manager as DB;
 use Clovers\View\View;
-
+use App\User;
 class HomeController extends BaseController
 {
     public function index()
     {
-      self::log([
-            'name' => 'donghai',
-            'age' => '18',
-            'address' => 'Shanghai, China',
-            'mobile' => '+86 13917338888',
-            'mail' => 'chendonghai888@gmail.com'
-        ],'userinfo','error');
+        var_dump(Config::get());
+        exit();
+        $users = DB::table('users')->get();
+        var_dump($users);
+//        exit();
+//      self::log([
+//            'name' => 'donghai',
+//            'age' => '18',
+//            'address' => 'Shanghai, China',
+//            'mobile' => '+86 13917338888',
+//            'mail' => 'chendonghai888@gmail.com'
+//        ],'userinfo','error');
 
+        $user = new User;
+        $user->username = 'someone';
+        $user->email = 'some@overtrue.me';
+        $user->save();
         $this->view = View::make('home.index')->with('video',Video::all())
 
             ->withTitle('HI MENGNIANG TV')
@@ -27,10 +39,7 @@ class HomeController extends BaseController
 
 //        $users = User::find(2);
 //        $users = User::all();
-//        $user = new User;
-//        $user->username = 'someone';
-//        $user->email = 'some@overtrue.me';
-//        $user->save();
+
 //        $session = new Session(new File(STORAGE_PATH . '/session'));
 //        $session->set("age",json_encode($this->test()));
 //        $name = $session->get('age');

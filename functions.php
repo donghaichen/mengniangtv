@@ -10,6 +10,17 @@
 |
 */
 
+if(! function_exists('env')){
+    function env($key, $default = null)
+    {
+        $key =  str_replace('.', '_', strtoupper($key));
+        $value = getenv($key);
+        if ($value === false) {
+            return value($default);
+        }
+        return urldecode($value);
+    }
+}
 if(! function_exists('get_ip')){
     /**
      * Get real IP.

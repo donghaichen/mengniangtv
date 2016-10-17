@@ -49,7 +49,7 @@ class BaseController
     public static function log($log, $type = '', $level = 'debug' )
     {
         Log::init([
-            'file_size'   => 10, //单位字节
+//            'file_size'   => 10, //单位字节
             'driver'  =>  'File',
             'path'  =>  STORAGE_PATH . '/logs/'
         ]);

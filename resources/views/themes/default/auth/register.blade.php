@@ -1,82 +1,64 @@
-@extends('layouts.app')
+<?php include __DIR__ . '/../layouts/header.blade.php' ?>
+<style>
+    html,body{
+        height: 100%;
+    }
+    .form-group:last-child{
+        margin-bottom: 0;
+    }
+    </style>
+<div class="login-bg">
+    <div class="container bs-docs-container">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div id="login-form" class="login-form text-center">
+                        <div class="tab-content">
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                        {!! csrf_field() !!}
+                            <form class="m-t" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control login-field" placeholder="请输入您的手机号" id="register-mobile" name="mobile">
+                                </div>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Name</label>
+                                <div class="form-group">
+                                    <input type="password" class="form-control login-field" placeholder="请输入不少于6位的密码" id="register-password" name="password">
+                                </div>
+                                <div class="form-group clearfix">
+                                    <input class="form-control mobile-code"  name="mobile_code" type="text" placeholder="校验码是4位数字">
+                                    <button type="submit" class="btn btn-default send-code">获取验证码</button>
+                                </div>
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <div class="form-group">
+                                <button type="submit" class="btn btn-default btn-block">注册</button>
+                                </div>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+
+                                <p class="text-muted text-center">
+                                    <a href="/auth/forget-password"><small>忘记密码？</small></a> |
+                                    <a href="/auth/login"><small>立即登录</small></a>
+                                </p>
+
+                                <div class="form-group margin-t-15 clearfix">
+                                    <a href="/auth/qq" class="btn btn-default btn-social btn-qq"><i class="fa fa-qq"></i> QQ登录</a>
+                                    <a href="/auth/weibo" class="btn btn-default btn-social btn-weibo"><i class="fa fa-weibo"></i>微博登录</a>
+                                </div>
+                            </form>
+
                         </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </div>
-@endsection
+  </body>
+<?php include __DIR__ . '/../layouts/footer.blade.php' ?>
+<script>
+    $(function () {
+        var h = ($(window).height() - $('#login-form').height()) / 2;
+        $('#login-form').css('margin-top',h);
+        console.log(h);
+
+    })
+
+</script>
