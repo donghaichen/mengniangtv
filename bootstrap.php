@@ -6,10 +6,8 @@
  * Time: 下午10:02
  */
 
-//注册自动加载
-require __DIR__ . '/vendor/autoload.php';
-
-//定义目录
+//定义常量
+define('APP_VERSION', '1.0.1');
 define('APP_PATH', __DIR__);
 define('CONF_PATH', __DIR__ . '/config');
 define('RESOURCES_PATH', __DIR__ . '/resources');
@@ -18,9 +16,13 @@ define('THEME_PATH', RESOURCES_PATH . '/views/themes');
 define('THEME', 'default');
 define('APP_START_TIME', microtime(true));
 define('APP_START_MEM', memory_get_usage());
+define('DS', DIRECTORY_SEPARATOR);
 
 //载入自定义函数
 require __DIR__ . '/functions.php';
+
+//注册自动加载
+require __DIR__ . '/vendor/autoload.php';
 
 // 加载环境变量配置
 $env = parse_ini_file(APP_PATH . '/.env', true);
@@ -37,10 +39,12 @@ foreach ($env as $key => $val) {
 }
 
 //加载APP配置
-$database = require CONF_PATH . '/database.php';
+use Illuminate\Clover\Config as Config;
+$config   = Config::get('app');
+$database = Config::get('database');
 
-//加载其他配置
-date_default_timezone_set("PRC");
+//配置APP
+date_default_timezone_set($config['timezone']);
 
 //Eloquent ORM
 use Illuminate\Database\Capsule\Manager as DB;

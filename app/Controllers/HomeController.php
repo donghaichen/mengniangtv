@@ -14,6 +14,8 @@ class HomeController extends BaseController
 {
     public function index()
     {
+        $users = User::all();
+        var_dump($users);
         var_dump(Config::get());
         exit();
         $users = DB::table('users')->get();
