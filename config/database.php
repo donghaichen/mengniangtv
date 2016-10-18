@@ -1,4 +1,10 @@
 <?php
+/**
+ * 数据库配置
+ * User: donghai
+ * Date: 16/2/17
+ * Time: 下午9:57
+ */
 return [
         'driver'    => env('DB_DRIVER', 'mysql'),
         'host'      => env('DB_HOST', '127.0.0.1'),

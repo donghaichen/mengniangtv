@@ -1,4 +1,10 @@
 <?php
+/**
+ * 会话配置
+ * User: donghai
+ * Date: 16/2/17
+ * Time: 下午9:57
+ */
 return [
     //Supported: "file", "database", "memcached", "redis"
     'driver' => env('DRIVER_SESSION', 'file'),

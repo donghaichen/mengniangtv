@@ -57,3 +57,10 @@ $db->bootEloquent();
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
+
+// Routes and Begin processing
+require CONF_PATH . '/routes.php';
+$app = new \Clovers\Route\Route();
+
+//启动APP
+$app->run();

@@ -1,7 +1,11 @@
 <?php
-//路由
+/**
+ * 路由配置
+ * User: donghai
+ * Date: 16/2/17
+ * Time: 下午9:57
+ */
 use Clovers\Route\Route;
-$router = new Route();
 Route::get('/', 'HomeController@index');
 Route::post('/', 'HomeController@index');
 Route::get('user/{id}/comment/{comment_id}', function($id){
@@ -15,5 +19,3 @@ Route::post('curl', 'HomeController@testCurlPage');
 Route::any('test/code/{id?}', 'CodeController@send');
 Route::get('view', 'HomeController@view');
 Route::get('api/sms', 'ApiController@sendSms');
-//启动APP
-$router->run();
