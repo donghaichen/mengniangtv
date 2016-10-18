@@ -8,7 +8,6 @@
 
 namespace App\Controllers;
 use App\User;
-use Illuminate\Database\Capsule\Manager as DB;
 
 class UserController extends BaseController
 {
@@ -18,16 +17,12 @@ class UserController extends BaseController
 
         $user->mobile = 'John' . rand(0 ,10000);
         $user->username = 'donghaichen' . rand(0, 1000);
-        $user->reg_ip = get_ip();
+        $user->reg_ip = '127.0.0.1';
         $user->password = password_hash('2', PASSWORD_BCRYPT);
 
         $user->save();
         $account = User::find(1);
-        print_r($account);
-
-
-        print_r( DB::getQueryLog());
-        $this->log('sms', 'sendsmsHAHHA',  (array)$account );
+        print_r($account->username);
 
     }
 

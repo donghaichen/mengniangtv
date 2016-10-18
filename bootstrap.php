@@ -52,6 +52,7 @@ $db = new DB;
 $db->addConnection($database);
 $db->setAsGlobal();
 $db->bootEloquent();
+DB::connection()->enableQueryLog();
 
 // whoops 错误提示
 $whoops = new \Whoops\Run;

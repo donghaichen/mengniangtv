@@ -3,6 +3,7 @@ namespace App\Controllers;
 use Exception;
 use Clovers\View\View;
 use Clovers\Log\Log;
+use Illuminate\Database\Capsule\Manager as DB;
 class BaseController
 {
     protected $view;
@@ -36,6 +37,7 @@ class BaseController
             extract($view->data);
             require $view->view;
         }
+        $this->log(DB::getQueryLog(), 'sql');
     }
 
     /**
@@ -49,7 +51,6 @@ class BaseController
     public static function log($log, $type = '', $level = 'debug' )
     {
         Log::init([
-//            'file_size'   => 10, //单位字节
             'driver'  =>  'File',
             'path'  =>  STORAGE_PATH . '/logs/'
         ]);
