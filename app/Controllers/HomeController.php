@@ -8,7 +8,6 @@ use Illuminate\Clover\Config;
 use Illuminate\Clover\Env;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Capsule\Manager as DB;
-use Clovers\View\View;
 use App\User;
 class HomeController extends BaseController
 {
@@ -29,10 +28,11 @@ class HomeController extends BaseController
 //            'mail' => 'chendonghai888@gmail.com'
 //        ],'userinfo','error');
 
-        $users =  [
-            "username"=> "donghaichen182",
-            "mobile"=> "John5007"
-        ];
+//        $users =  [
+//            "username"=> "donghaichen182",
+//            "mobile"=> "John5007"
+//        ];
+        $users = User::find(1);
         return view('home.index', $users);
 
 

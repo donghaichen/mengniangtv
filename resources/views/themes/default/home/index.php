@@ -23,7 +23,7 @@
 <?php
 $users = self::$data;
 //            var_dump($data);
-            var_dump($users);
+            var_dump($users->username);
 //            var_dump(self::$data);
          ?>
 
