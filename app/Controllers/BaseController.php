@@ -1,18 +1,17 @@
 <?php
 namespace App\Controllers;
 use Exception;
-use Clovers\View\View;
 use Clovers\Log\Log;
 use Illuminate\Database\Capsule\Manager as DB;
 class BaseController
 {
-    protected $view;
     /*
      * 构造方法
      * 多用于初始化任务（比如对变量进行初始化赋值）
      */
     public function __construct()
     {
+
     }
     /*
      * 公用404方法
@@ -31,15 +30,10 @@ class BaseController
      */
     public function __destruct()
     {
-        $view = $this->view;
-        if ( $view instanceof View )
-        {
-            extract($view->data);
-            require $view->view;
-        }
+
         self::log(log_sql(DB::getQueryLog()),'debug', 'sql');
-        self::log('测试日志信息，这是错误级别', 'error');
-        self::log('测试日志信息，这是紧急级别', 'emergency');
+        self::log('测试日志信息，这是错误级别' . date('Y-m-d H:i:s'), 'error');
+        self::log('测试日志信息，这是紧急级别'. date('Y-m-d H:i:s'), 'emergency');
     }
 
     /**

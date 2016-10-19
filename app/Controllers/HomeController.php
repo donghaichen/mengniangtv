@@ -17,9 +17,9 @@ class HomeController extends BaseController
 //        $users = User::find(1);
 //                var_dump($users);
 //        var_dump(Config::get());
-        exit();
-        $users = DB::table('users')->get();
-        var_dump($users);
+//        exit();
+//        $users = DB::table('users')->get();
+//        var_dump($users);
 //        exit();
 //      self::log([
 //            'name' => 'donghai',
@@ -29,15 +29,12 @@ class HomeController extends BaseController
 //            'mail' => 'chendonghai888@gmail.com'
 //        ],'userinfo','error');
 
-        $user = new User;
-        $user->username = 'someone';
-        $user->email = 'some@overtrue.me';
-        $user->save();
-        $this->view = View::make('home.index')->with('video',Video::all())
+        $users =  [
+            "username"=> "donghaichen182",
+            "mobile"=> "John5007"
+        ];
+        return view('home.index', $users);
 
-            ->withTitle('HI MENGNIANG TV')
-
-            ->withStatus('OK!');
 
 //        $users = User::find(2);
 //        $users = User::all();

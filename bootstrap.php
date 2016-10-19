@@ -15,6 +15,8 @@ define('STORAGE_PATH', RESOURCES_PATH . '/storage');
 define('LOG_PATH', STORAGE_PATH.'/logs/');
 define('THEME_PATH', RESOURCES_PATH . '/views/themes');
 define('THEME', 'default');
+define('URL_SUFFIX', '.html');
+define('VIEW_SUFFIX','.php');
 define('APP_START_TIME', microtime(true));
 define('APP_START_MEM', memory_get_usage());
 define('DS', DIRECTORY_SEPARATOR);

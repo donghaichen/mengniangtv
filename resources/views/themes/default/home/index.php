@@ -1,5 +1,4 @@
-<?php include __DIR__ . '/../layouts/header.blade.php' ?>
-
+<?php load('layouts.header') ?>
 <div class="jumbotron masthead">
     <div class="container">
         <h1>MENGNIANG.TV</h1>
@@ -21,26 +20,16 @@
         <input type="submit" value="Submit" />
     </form>
     <div class="row">
-<?php foreach($video as $v) {?>
-        <div class="col-sm-6 col-md-4 col-lg-3 ">
-            <div class="thumbnail">
-                <a><img width="300" height="150" ></a>
-                <div class="caption">
-                    <h3>
-                        <a><?php echo $v['title']?></a>
-                    </h3>
-                    <p>
-                        <?php echo $v['content']?>
-                    </p>
-                </div>
-            </div>
-        </div>
-<?php } ?>
+<?php
+$users = self::$data;
+//            var_dump($data);
+            var_dump($users);
+//            var_dump(self::$data);
+         ?>
 
 
 
     </div>
 </div><!-- /.container -->
 
-
-<?php include __DIR__ . '/../layouts/footer.blade.php' ?>
+<?php load('layouts.footer') ?>

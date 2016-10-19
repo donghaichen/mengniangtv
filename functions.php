@@ -6,6 +6,21 @@
  * Date: 16/2/17
  * Time: 下午10:02
  */
+if(!function_exists('load'))
+{
+    function load($view_name)
+    {
+        require THEME_PATH . DS . THEME . DS .  str_replace('.', DS, $view_name) . VIEW_SUFFIX;
+    }
+}
+if(!function_exists('view'))
+{
+    function view($view = null, $data = [])
+    {
+        \Clovers\View\View::show($view, $data);
+    }
+}
+
 if(!function_exists('get_current_url'))
 {
     /**
