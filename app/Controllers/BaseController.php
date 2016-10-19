@@ -38,7 +38,7 @@ class BaseController
             require $view->view;
         }
         self::log(log_sql(DB::getQueryLog()),'debug', 'sql');
-        self::log('测试日志信息，这是错误级别', 'error');[]
+        self::log('测试日志信息，这是错误级别', 'error');
         self::log('测试日志信息，这是紧急级别', 'emergency');
     }
 

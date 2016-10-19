@@ -316,13 +316,13 @@ if (! function_exists('log_sql')) {
         }
         $sqlLog = (explode(PHP_EOL, $sqlLog));
         array_pop($sqlLog);
-        // 被调用记录
-        $backtrace = debug_backtrace();
         foreach ($sqlLog as $k => $v){
             $sql_log[$k]['sql'] = $v;
             $sql_log[$k]['time'] = $sqlList[$k]['time'];
         }
         $content = $sql_log;
+        // 被调用记录
+        $backtrace = debug_backtrace();
         $content['backtrace']= $backtrace[0]['file'] . ': ' . $backtrace[0]['line'];
         return $content;
     }
