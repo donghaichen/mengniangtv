@@ -6,6 +6,44 @@
  * Date: 16/2/17
  * Time: 下午10:02
  */
+if(!function_exists('debug'))
+{
+    function debug($debug = true)
+    {
+        if($debug)
+        {
+            // whoops 错误提示
+            $whoops = new \Whoops\Run;
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+            $whoops->register();
+            ini_set("display_errors", "On");
+        }else{
+            ini_set("display_errors", "Off");
+        }
+        ini_set("error_reprorting", "E_ALL");
+        ini_set("log_errors", "On");
+        ini_set("error_log", LOG_PATH .'/error_log/' . date('Ymd') . '.log');
+    }
+}
+if(!function_exists('get_env'))
+{
+    function get_env($env_file = '')
+    {
+        $env_file = $env_file ? $env_file : APP_PATH . '/.env';
+        $env = parse_ini_file($env_file, true);
+        foreach ($env as $key => $val) {
+            $name = strtoupper($key);
+            if (is_array($val)) {
+                foreach ($val as $k => $v) {
+                    $item = $name . '_' . strtoupper($k);
+                    putenv("$item=$v");
+                }
+            } else {
+                putenv("$name=$val");
+            }
+        }
+    }
+}
 if(!function_exists('load'))
 {
     function load($view_name)
@@ -17,7 +55,7 @@ if(!function_exists('view'))
 {
     function view($view = null, $data = null)
     {
-        return \Clovers\View\View::show($view, $data);
+        return \Clovers\View\View::view($view, $data);
     }
 }
 

@@ -32,8 +32,7 @@ class HomeController extends BaseController
 //            "username"=> "donghaichen182",
 //            "mobile"=> "John5007"
 //        ];
-        $users = User::find(1);
-        return view('home.index', $users);
+
 
 
 //        $users = User::find(2);
@@ -60,13 +59,9 @@ class HomeController extends BaseController
     }
     private function test()
     {
-        return [
-            'app_key'   =>"test2222key",
-            'app_secret'=>"testsercret",
-            'images'    =>[
-                'file'  =>'@/Users/donghai/Desktop/clover500.png'
-            ]
-        ];
+        $data['title'] = 'test title';
+        $data['users'] = User::find(1);
+        return view('test.index', $data);
     }
 
 

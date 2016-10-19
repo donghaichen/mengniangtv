@@ -21,25 +21,14 @@ define('APP_START_TIME', microtime(true));
 define('APP_START_MEM', memory_get_usage());
 define('DS', DIRECTORY_SEPARATOR);
 
-// 加载环境变量配置
-$env = parse_ini_file(APP_PATH . '/.env', true);
-foreach ($env as $key => $val) {
-    $name = strtoupper($key);
-    if (is_array($val)) {
-        foreach ($val as $k => $v) {
-            $item = $name . '_' . strtoupper($k);
-            putenv("$item=$v");
-        }
-    } else {
-        putenv("$name=$val");
-    }
-}
-
 //注册自动加载
 require __DIR__ . '/vendor/autoload.php';
 
 //载入自定义函数
 require __DIR__ . '/functions.php';
+
+// 加载环境变量配置
+get_env();
 
 //加载APP配置
 use Illuminate\Clover\Config as Config;
@@ -49,18 +38,7 @@ $database = Config::get('database');
 
 //配置APP
 date_default_timezone_set($app->config->timezone);
-if($app->config->debug)
-{
-    // whoops 错误提示
-    $whoops = new \Whoops\Run;
-    $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-    $whoops->register();
-}else{
-    ini_set("error_reprorting", "E_ALL");
-    ini_set("display_errors", "Off");
-    ini_set("log_errors", "On");
-    ini_set("error_log", LOG_PATH .'/error_log/' . date('Ymd') . '.log');
-}
+$app->config->debug ? debug() : debug(false);
 
 // Routes and Begin processing
 require CONF_PATH . '/routes.php';

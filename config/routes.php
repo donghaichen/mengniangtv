@@ -13,9 +13,11 @@ Route::get('user/{id}/comment/{comment_id}', function($id){
 });
 Route::get('user/{id}/', 'UserController@show');
 Route::get('category/{id}/', 'CategoryController@show');
-Route::get('test/sql','Test\SqlController@testSql');
 Route::get('curl', 'HomeController@testCurlPage');
 Route::post('curl', 'HomeController@testCurlPage');
-Route::any('test/code/{id?}', 'CodeController@send');
+Route::get('test', 'TestController@index');
+Route::get('test/view', 'TestController@view');
+Route::get('test/view_whitout', 'TestController@viewWithout');
+Route::get('test/sql','TestController@testSql');
 Route::get('view', 'HomeController@view');
 Route::get('api/sms', 'ApiController@sendSms');

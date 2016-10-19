@@ -1,12 +1,36 @@
 <?php
-namespace App\Controllers\Test;
+/**
+ * Created by PhpStorm.
+ * User: donghai
+ * Date: 16-10-14
+ * Time: 下午2:30
+ */
 
-use App\Controllers\BaseController;
+namespace App\Controllers;
+
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Schema\Blueprint;
+use App\User;
 
-class SqlController extends BaseController
+class TestController extends BaseController
 {
+    public function index()
+    {
+        return 'Hello world';
+    }
+
+    public function view()
+    {
+        $data['title'] = 'Test Title';
+        $data['users'] = User::all();
+        return view('test.index', $data);
+    }
+
+    public function viewWithout()
+    {
+        return view('test.without');
+    }
+
     public function testSql()
     {
 
@@ -392,6 +416,7 @@ class SqlController extends BaseController
                 ['name' => '明星', 'parent' =>10],
                 ['name' => 'Korea相关', 'parent' =>10]
             ]
-         );
+        );
     }
+
 }

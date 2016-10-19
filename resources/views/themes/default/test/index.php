@@ -1,7 +1,10 @@
 <?php load('layouts.header') ?>
 <div class="jumbotron masthead">
     <div class="container">
-        <h1>MENGNIANG.TV</h1>
+        <h1><?php
+            echo $title;
+
+            ?></h1>
         <script type="text/javascript" src="http://ip.chinaz.com/getip.aspx"></script>
         <p class="masthead-button-links">
             <a class="btn btn-lg btn-primary btn-shadow" >Let's   🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶</a>
@@ -20,14 +23,9 @@
         <input type="submit" value="Submit" />
     </form>
     <div class="row">
-<?php
-echo $title;
-//var_dump($users);
-//$users = self::$data;
-//            var_dump($data);
-//            var_dump($data);
-//            var_dump(self::$data);
-         ?>
+        <?php
+      var_dump($users);
+        ?>
 
 
 
