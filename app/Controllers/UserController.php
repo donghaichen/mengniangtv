@@ -16,13 +16,13 @@ class UserController extends BaseController
         $user = new User;
 
         $user->mobile = 'John' . rand(0 ,10000);
-        $user->username = 'donghaichen' . rand(0, 1000);
+        $user->username = 'chen' . rand(0, 10000000);
         $user->reg_ip = '127.0.0.1';
         $user->password = password_hash('2', PASSWORD_BCRYPT);
 
         $user->save();
         $account = User::find(1);
-        print_r($account->username);
+//        print_r($account->username);
 
     }
 

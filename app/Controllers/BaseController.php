@@ -37,7 +37,9 @@ class BaseController
             extract($view->data);
             require $view->view;
         }
-        $this->log(DB::getQueryLog(), 'sql');
+        self::log(log_sql(DB::getQueryLog()),'debug', 'sql');
+        self::log('测试日志信息，这是错误级别', 'error');[]
+        self::log('测试日志信息，这是紧急级别', 'emergency');
     }
 
     /**
@@ -48,11 +50,11 @@ class BaseController
      * @param string
      * @return bool
      */
-    public static function log($log, $type = '', $level = 'debug' )
+    public static function log($log, $level = 'debug', $type = '')
     {
         Log::init([
             'driver'  =>  'File',
-            'path'  =>  STORAGE_PATH . '/logs/'
+            'path'  =>  LOG_PATH
         ]);
         Log::$level($type, $log);
     }

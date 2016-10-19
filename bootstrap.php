@@ -12,17 +12,12 @@ define('APP_PATH', __DIR__);
 define('CONF_PATH', __DIR__ . '/config');
 define('RESOURCES_PATH', __DIR__ . '/resources');
 define('STORAGE_PATH', RESOURCES_PATH . '/storage');
+define('LOG_PATH', STORAGE_PATH.'/logs/');
 define('THEME_PATH', RESOURCES_PATH . '/views/themes');
 define('THEME', 'default');
 define('APP_START_TIME', microtime(true));
 define('APP_START_MEM', memory_get_usage());
 define('DS', DIRECTORY_SEPARATOR);
-
-//载入自定义函数
-require __DIR__ . '/functions.php';
-
-//注册自动加载
-require __DIR__ . '/vendor/autoload.php';
 
 // 加载环境变量配置
 $env = parse_ini_file(APP_PATH . '/.env', true);
@@ -38,13 +33,36 @@ foreach ($env as $key => $val) {
     }
 }
 
+//注册自动加载
+require __DIR__ . '/vendor/autoload.php';
+
+//载入自定义函数
+require __DIR__ . '/functions.php';
+
 //加载APP配置
 use Illuminate\Clover\Config as Config;
-$config   = Config::get('app');
+$app = new stdClass();
+$app->config  = (object) Config::get('app');
 $database = Config::get('database');
 
 //配置APP
-date_default_timezone_set($config['timezone']);
+date_default_timezone_set($app->config->timezone);
+if($app->config->debug)
+{
+    // whoops 错误提示
+    $whoops = new \Whoops\Run;
+    $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+    $whoops->register();
+}else{
+    ini_set("error_reprorting", "E_ALL");
+    ini_set("display_errors", "Off");
+    ini_set("log_errors", "On");
+    ini_set("error_log", LOG_PATH .'/error_log/' . date('Ymd') . '.log');
+}
+
+// Routes and Begin processing
+require CONF_PATH . '/routes.php';
+$app->route = new \Clovers\Route\Route();
 
 //Eloquent ORM
 use Illuminate\Database\Capsule\Manager as DB;
@@ -54,14 +72,5 @@ $db->setAsGlobal();
 $db->bootEloquent();
 DB::connection()->enableQueryLog();
 
-// whoops 错误提示
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-$whoops->register();
-
-// Routes and Begin processing
-require CONF_PATH . '/routes.php';
-$app = new \Clovers\Route\Route();
-
 //启动APP
-$app->run();
+$app->route->run();

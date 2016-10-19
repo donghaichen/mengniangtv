@@ -1,32 +1,39 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| 复写官方函数
-|--------------------------------------------------------------------------
-|
-| 官方函数库路径
-| Illuminate/Support/helpers.php
-|
-*/
-
+/**
+ * 扩展官方函数
+ * 该函数可以用系统类库的方法，所以必须在自动加载之后调用该方法，
+ * User: donghai
+ * Date: 16/2/17
+ * Time: 下午10:02
+ */
 if(!function_exists('get_current_url'))
 {
-    //php获取当前访问的完整url地址
+    /**
+     * 获取当前访问的完整url地址.
+     *
+     * @return string
+     */
     function get_current_url(){
-        $url='http://';
-        if(isset($_SERVER['HTTPS'])&&$_SERVER['HTTPS']=='on'){
-            $url='https://';
+        $url = 'http://';
+        if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'){
+            $url = 'https://';
         }
         if($_SERVER['SERVER_PORT']!='80'){
-            $url.=$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'];
+            $url.= $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
         }else{
-            $url.=$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+            $url.= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
         }
         return $url;
     }
 }
 if(! function_exists('env')){
+    /*
+     * 获取环境变量
+     *
+     * @param string $key
+     * @param strigin $default
+     * @return string
+     */
     function env($key, $default = null)
     {
         $key =  str_replace('.', '_', strtoupper($key));
@@ -42,7 +49,7 @@ if(! function_exists('get_ip')){
      * Get real IP.
      *
      * @param  string  $data
-     * @return string json
+     * @return string json mixed
      */
     function get_ip($data = false)
     {
@@ -56,52 +63,19 @@ if(! function_exists('get_ip')){
         return $data===false ? $ip : $str;
     }
 }
-//if (! function_exists('app')) {
-//    /**
-//     * Get the available container instance.
-//     *
-//     * @param  string  $make
-//     * @param  array   $parameters
-//     * @return mixed|\Illuminate\Foundation\Application
-//     */
-//    function app($make = null, $parameters = [])
-//    {
-//        if (is_null($make)) {
-//            return Container::getInstance();
-//        }
-//
-//        return Container::getInstance()->make($make, $parameters);
-//    }
-//}
-//if (! function_exists('csrf_token')) {
-//    /**
-//     * Get the CSRF token value.
-//     *
-//     * @return string
-//     *
-//     * @throws \RuntimeException
-//     */
-//    function csrf_token()
-//    {
-//        $session = app('session');
-//
-//        if (isset($session)) {
-//            return $session->getToken();
-//        }
-//
-//        throw new RuntimeException('Application session store not set.');
-//    }
 
 if(! function_exists('is_mobile')){
     /**
      * 验证手机号是否正确
-     * @author donghaichen
-     * @param INT $mobile
-     * 移动：134、135、136、137、138、139、150、151、152、157、158、159、182、183、184、187、188、178(4G)、147(上网卡)；
+     * *移动：134、135、136、137、138、139、150、151、152、157、158、159、182、183、184、187、188、178(4G)、147(上网卡)；
      * 联通：130、131、132、155、156、185、186、176(4G)、145(上网卡)；
      * 电信：133、153、180、181、189 、177(4G)；
      * 卫星通信：1349
      * 虚拟运营商：170
+     *
+     * @author donghaichen
+     * @param INT $mobile
+     * @return mixed
      */
     function is_mobile($mobile)
     {
@@ -116,6 +90,8 @@ if(! function_exists('is_mobile')){
 if(! function_exists('hide_str')){
     /**
      * hide str
+     *
+     *
      */
     function hide_str($type,$str,$auth=false)
     {
@@ -319,24 +295,36 @@ if (! function_exists('log_sql')) {
      * 将 SQL 执行记录写入调试日志
      * @return void
      */
-    function log_sql()
+    function log_sql($sqlList)
     {
-        $sqlList = DB::getQueryLog();
-        $sqlLog  = '';
-        foreach ($sqlList as $sql) {
-            foreach (explode('?', $sql['query']) as $key => $value) {
-                $sqlLog .= isset($sql['bindings'][$key])
-                    ? $value.$sql['bindings'][$key]
-                    : $value;
-            }
-            $sqlLog .= PHP_EOL.PHP_EOL;
+        if(!$sqlList){
+            return false;
         }
+        $sqlLog  = '';
+        foreach ($sqlList as $k => $sql) {
+            foreach (explode('?', $sql['query']) as $key => $value) {
+                if(isset($sql['bindings'][$key])){
+                    if(is_string($sql['bindings'][$key])){
+                        $sqlLog .= $value . '\'' . $sql['bindings'][$key] . '\'';
+                    }else{
+                        $sqlLog .= $value . $sql['bindings'][$key];
+                    }
+                }else{
+                    $sqlLog .=  $value . PHP_EOL;
+                }
+            }
+        }
+        $sqlLog = (explode(PHP_EOL, $sqlLog));
+        array_pop($sqlLog);
         // 被调用记录
         $backtrace = debug_backtrace();
-        $content   = $_SERVER['REQUEST_URI'].PHP_EOL.PHP_EOL;
-        $content  .= '断点位置 => '.$backtrace[0]['file'].':'.$backtrace[0]['line'].PHP_EOL.PHP_EOL;
-        // 写入日志
-        Log::debug($content.$sqlLog);
+        foreach ($sqlLog as $k => $v){
+            $sql_log[$k]['sql'] = $v;
+            $sql_log[$k]['time'] = $sqlList[$k]['time'];
+        }
+        $content = $sql_log;
+        $content['backtrace']= $backtrace[0]['file'] . ': ' . $backtrace[0]['line'];
+        return $content;
     }
 }
 
