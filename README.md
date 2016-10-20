@@ -2,6 +2,11 @@
 
 ### Install
 ```shell
+composer create-project mengniang/mengniang --prefer-dist
+```
+
+or
+```shell
             git clone https://github.com/donghaichen/mengniangtv.git
             cd mengniangtv
             composer install
