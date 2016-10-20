@@ -3,6 +3,7 @@
     "keywords": ["video", "php", "danma" ],
     "descripthon": "A danma site see more to http://mengniang.tv",
     "type": "project",
+    'language':'PHP',
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [
