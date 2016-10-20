@@ -1,22 +1,23 @@
 <?php
 /**
- * 扩展官方函数
+ * 助手函数
  * 该函数可以用系统类库的方法，所以必须在自动加载之后调用该方法，
  * User: donghai
  * Date: 16/2/17
  * Time: 下午10:02
  */
+
 if(!function_exists('debug'))
 {
     function debug($debug = true)
     {
         if($debug)
         {
+            ini_set("display_errors", "On");
             // whoops 错误提示
             $whoops = new \Whoops\Run;
             $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
             $whoops->register();
-            ini_set("display_errors", "On");
         }else{
             ini_set("display_errors", "Off");
         }
@@ -275,14 +276,6 @@ if (! function_exists('link_to_route')) {
     }
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| 延伸自拓展配置文件
-|--------------------------------------------------------------------------
-|
-*/
-
 if (! function_exists('style')) {
     /**
      * 样式别名加载（支持批量加载，后期可拓展为自动多文件压缩合并）
@@ -317,13 +310,6 @@ if (! function_exists('script')) {
     }
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| 自定义核心函数
-|--------------------------------------------------------------------------
-|
-*/
 
 if (! function_exists('l')) {
     /**
@@ -445,13 +431,6 @@ if (! function_exists('strip')) {
     }
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| 公共函数库
-|--------------------------------------------------------------------------
-|
-*/
 
 if (! function_exists('close_tags')) {
     /**

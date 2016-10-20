@@ -24,8 +24,8 @@ define('DS', DIRECTORY_SEPARATOR);
 //注册自动加载
 require __DIR__ . '/vendor/autoload.php';
 
-//载入自定义函数
-require __DIR__ . '/functions.php';
+//载入助手函数
+require __DIR__ . '/helps.php';
 
 // 加载环境变量配置
 get_env();

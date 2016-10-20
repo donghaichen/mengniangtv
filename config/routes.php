@@ -19,5 +19,6 @@ Route::get('test', 'TestController@index');
 Route::get('test/view', 'TestController@view');
 Route::get('test/view_whitout', 'TestController@viewWithout');
 Route::get('test/sql','TestController@testSql');
+Route::get('test/request/{id}/{name}','TestController@request');
 Route::get('view', 'HomeController@view');
 Route::get('api/sms', 'ApiController@sendSms');

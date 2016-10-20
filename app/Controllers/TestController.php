@@ -7,10 +7,12 @@
  */
 
 namespace App\Controllers;
-
+use Clovers\Http\Response;
+use Clovers\Http\Request;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Schema\Blueprint;
 use App\User;
+
 
 class TestController extends BaseController
 {
@@ -24,6 +26,13 @@ class TestController extends BaseController
         $data['title'] = 'Test Title';
         $data['users'] = User::all();
         return view('test.index', $data);
+    }
+
+    public function request(Request $request, Response $response)
+    {
+        $name = $request->getAttribute('name');
+        $response->getBody()->write("Hello, $name");
+        return $response;
     }
 
     public function viewWithout()

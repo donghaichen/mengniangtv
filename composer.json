@@ -15,11 +15,13 @@
         "php": ">=5.5.9",
         "clovers/route": "dev-master",
         "clovers/log": "dev-master",
+        "clovers/http": "dev-master",
         "clovers/session": "dev-master",
         "illuminate/database": "^5.2",
         "clovers/framework": "dev-master",
         "filp/whoops": "^2.1",
-        "clovers/view": "dev-master"
+        "clovers/view": "dev-master",
+        "psr/http-message": "dev-master"
     },
     "require-dev": {
     },
@@ -33,5 +35,11 @@
             "type": "composer",
             "url": "https://packagist.phpcomposer.com"
         }
+    },
+    "scripts": {
+        "app-start": "php -S localhost:8888 -t public",
+        "app-config-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
     }
 }
