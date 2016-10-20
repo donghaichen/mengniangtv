@@ -25,7 +25,7 @@ define('DS', DIRECTORY_SEPARATOR);
 require __DIR__ . '/vendor/autoload.php';
 
 //载入助手函数
-require __DIR__ . '/helps.php';
+require __DIR__ . '/helper.php';
 
 // 加载环境变量配置
 get_env();

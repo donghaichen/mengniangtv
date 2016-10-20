@@ -55,6 +55,7 @@ class HomeController extends BaseController
 //        $user->username = 'someone';
 //        $user->email = 'some@overtrue.me';
 //        $user->save();
+        $this->test();
 
     }
     private function test()
