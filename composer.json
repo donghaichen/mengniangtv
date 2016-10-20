@@ -1,10 +1,9 @@
 {
     "name": "mengniang/mengniang",
     "keywords": ["video", "php", "danma" ],
-    "descripthon": "A danma site see more to http://mengniang.tv",
+    "descripthon": "A danma site see more to ",
     "type": "project",
-    "language": "PHP",
-    "homepage": "http://www.baidu.com",
+    "homepage": "http://mengniang.tv",
     "license": "MIT",
     "authors": [
         {
