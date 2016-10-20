@@ -3,9 +3,9 @@
     "keywords": ["video", "php", "danma" ],
     "descripthon": "A danma site see more to http://mengniang.tv",
     "type": "project",
-    'language':'PHP',
+    "language": "PHP",
+    "homepage": "http://www.baidu.com",
     "license": "MIT",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Donghaichen",
