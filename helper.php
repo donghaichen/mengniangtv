@@ -49,7 +49,7 @@ if(!function_exists('load'))
 {
     function load($view_name)
     {
-        include THEME_PATH . DS . THEME . DS .  str_replace('.', DS, $view_name) . VIEW_SUFFIX;
+        return \Clovers\View\View::load($view_name);
     }
 }
 if(!function_exists('view'))
@@ -496,3 +496,67 @@ if (! function_exists('order_by')) {
         return $a;
     }
 }
+use Clovers\Http\Response;
+if (!function_exists('json')) {
+    /**
+     * 获取\think\response\Json对象实例
+     * @param mixed   $data 返回的数据
+     * @param integer $code 状态码
+     * @param array   $header 头部
+     * @param array   $options 参数
+     * @return \think\response\Json
+     */
+    function json($data = [], $code = 200, $header = [], $options = [])
+    {
+        return Response::create($data, 'json', $code, $header, $options);
+    }
+}
+
+if (!function_exists('jsonp')) {
+    /**
+     * 获取\think\response\Jsonp对象实例
+     * @param mixed   $data    返回的数据
+     * @param integer $code    状态码
+     * @param array   $header 头部
+     * @param array   $options 参数
+     * @return \think\response\Jsonp
+     */
+    function jsonp($data = [], $code = 200, $header = [], $options = [])
+    {
+        return Response::create($data, 'jsonp', $code, $header, $options);
+    }
+}
+
+if (!function_exists('xml')) {
+    /**
+     * 获取\think\response\Xml对象实例
+     * @param mixed   $data    返回的数据
+     * @param integer $code    状态码
+     * @param array   $header  头部
+     * @param array   $options 参数
+     * @return \think\response\Xml
+     */
+    function xml($data = [], $code = 200, $header = [], $options = [])
+    {
+        return Response::create($data, 'xml', $code, $header, $options);
+    }
+}
+
+if (!function_exists('redirect')) {
+    /**
+     * 获取\think\response\Redirect对象实例
+     * @param mixed         $url 重定向地址 支持Url::build方法的地址
+     * @param array|integer $params 额外参数
+     * @param integer       $code 状态码
+     * @return \think\response\Redirect
+     */
+    function redirect($url = [], $params = [], $code = 302)
+    {
+        if (is_integer($params)) {
+            $code   = $params;
+            $params = [];
+        }
+        return Response::create($url, 'redirect', $code)->params($params);
+    }
+}
+

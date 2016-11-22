@@ -20,14 +20,9 @@
         <input type="submit" value="Submit" />
     </form>
     <div class="row">
-<?php
-echo $title;
-//var_dump($users);
-//$users = self::$data;
-//            var_dump($data);
-//            var_dump($data);
-//            var_dump(self::$data);
-         ?>
+        <?php echo $title;
+        var_dump($users);
+        ?>
 
 
 

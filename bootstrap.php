@@ -53,4 +53,5 @@ $db->bootEloquent();
 DB::connection()->enableQueryLog();
 
 //启动APP
+
 $app->route->run();

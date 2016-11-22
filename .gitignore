@@ -4,5 +4,5 @@
 Thumbs.db
 sql/
 composer.lock
-vendor/
+#vendor/
 .env

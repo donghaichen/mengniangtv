@@ -55,15 +55,32 @@ class HomeController extends BaseController
 //        $user->username = 'someone';
 //        $user->email = 'some@overtrue.me';
 //        $user->save();
-        $this->test();
+//        $this->viewCompact();
+//        $this->view();
+        $this->testJson();
 
     }
-    private function test()
+
+    private function testJson()
+    {
+        $data = ['name'=>'thinkphp','url'=>'thinkphp.cn'];
+        return json(['data'=>$data,'code'=>1,'message'=>'操作完成']);
+    }
+
+    private function viewCompact()
+    {
+        $title = 'test title';
+        $users = User::find(1);
+        return view('home.index', compact('title', 'users'));
+    }
+
+    private function view()
     {
         $data['title'] = 'test title';
         $data['users'] = User::find(1);
-        return view('test.index', $data);
+        return view('home.index', $data);
     }
+
 
 
 
